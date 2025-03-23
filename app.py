@@ -60,12 +60,9 @@ class StereogramApp(tk.Tk):
             return
 
         stereogram = generate_stereogram(self.depth_map, pw, ds)
-        stereogram = add_guide_dots(stereogram, separation=ds)
+        stereogram = add_guide_dots(stereogram, separation=ds*2)
         self.result_img = Image.fromarray(stereogram)
         self.tk_img = ImageTk.PhotoImage(self.result_img)
-        # resize the image to 2x its original size
-        
-        
         self.canvas.create_image(0, 0, anchor="nw", image=self.tk_img)
 
     def save_image(self):
